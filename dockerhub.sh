@@ -56,7 +56,7 @@ dirtyStatus() {
 validateVersion() {
   local -r VERSION="$1"
   [ -z "$VERSION" ] && error "Specify version number."
-  [[ $VERSION =~ ^v[0-9]+\.[0-9]\.[0-9]$ ]] || error "Use semantic version. Example: v1.2.3"
+  [[ $VERSION =~ ^[0-9]+\.[0-9]\.[0-9]$ ]] || error "Use semantic version. Example: 1.2.3"
   [ "$(dirtyStatus)" -gt 0 ] && error "Version is not valid unless you commit your changes."
   echo "$VERSION"
 }
@@ -97,6 +97,8 @@ push() {
     echo "> Tagged: $IMAGE:$VERSION"
   docker push $DOCKERHUB_IMAGE && \
     echo "> Pushed: $DOCKERHUB_IMAGE"
+  git tag "$IMAGE-$VERSION" && git push --tags && \
+    echo "> Pushed git tag: $IMAGE-$VERSION"
 }
 
 release() {
