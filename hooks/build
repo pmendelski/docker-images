@@ -1,8 +1,12 @@
 #!/bin/bash
 
-# $IMAGE_NAME is injected into the build so the tag is correct.
+# Below variables are injected into the build by dockerhub.
 
 echo "Build hook running"
+echo "  DOCKER_TAG: $DOCKER_TAG"
+echo "  VCS_URL: $VCS_URL"
+echo "  VCS_REF: $SOURCE_COMMIT"
+echo "  IMAGE_NAME: $IMAGE_NAME"
 
 docker build \
   --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
