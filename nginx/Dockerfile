@@ -9,7 +9,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.version=$VERSION
 
-ENV NGINX_VERSION=1.10.2-r0
+ENV NGINX_VERSION=1.10.3-r0
 
 RUN apk --no-cache add \
   nginx=$NGINX_VERSION \
