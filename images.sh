@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && echo $PWD )"
 cd "$DIR"
 
 SCRIPT_NAME="images.sh"
-AUTOMATED_BUILD=1
+DOCKERHUB_USERNAME="mendlik"
 
 function help() {
   echo "NAME"
@@ -43,9 +43,12 @@ if [ "$1" == "help" ] || [ "$1" == "-h" ]; then
   exit 1;
 fi
 
-showTags() {
+tags() {
   local -r REPO="$1"
-  curl -k "https://registry.hub.docker.com/v1/repositories/$DOCKERHUB_USER/$REPO/tags" | jq -r '.[].name'
+  echo "Dockerhub tags:"
+  curl -sk "https://registry.hub.docker.com/v1/repositories/$DOCKERHUB_USERNAME/$REPO/tags" | jq -r '.[].name'
+  echo ""
+  echo "See: https://hub.docker.com/r/$DOCKERHUB_USERNAME/$REPO/tags"
 }
 
 dirtyStatus() {
@@ -67,9 +70,11 @@ build() {
 release() {
   local -r IMAGE="$1"
   local -r VERSION="$2"
+  local -r TAG="$IMAGE-$VERSION"
   validateVersion $VERSION
-  git tag "${IMAGE}_${VERSION}" && git push --tags && \
-    echo "> Pushed git tag: $IMAGE-$VERSION"
+  git tag $TAG && git push --tags && \
+    echo "Pushed git tag: $TAG" && \
+    echo "See: https://hub.docker.com/r/$DOCKERHUB_USERNAME/$IMAGE/~/settings/automated-builds/"
 }
 
 IMAGE="$1"
