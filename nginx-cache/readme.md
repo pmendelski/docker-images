@@ -17,7 +17,7 @@ I use it while performing programming presentations with life coding sessions. I
 
 ## Simple usage
 
-1. Start the container
+Start the container
 ```
 docker run -d --name nginx-long-cache \
   -p 8787:8080 \
@@ -25,7 +25,7 @@ docker run -d --name nginx-long-cache \
   -v $HOME/.nginx/longcache/cache:/var/cache/nginx \
   mendlik/nginx-cache
 ```
-2. Setup system wide network proxy for HTTP ([Example for Ubuntu](https://help.ubuntu.com/stable/ubuntu-help/net-proxy.html))
+Setup system wide network proxy for HTTP ([Example for Ubuntu](https://help.ubuntu.com/stable/ubuntu-help/net-proxy.html))
 
 ## Test case
 
@@ -34,7 +34,7 @@ docker run -d --name nginx-long-cache \
 ```
 curl -I -x 'localhost:8787' 'http://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js'
 ```
-4. Second request is cached and contains following headers:
+Second request should be cached and should contain following headers:
 ```
 X-Cached: HIT
 X-Cache-Server: mendlik/nginx-cache
