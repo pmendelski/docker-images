@@ -20,7 +20,7 @@ I use it while performing programming presentations with life coding sessions. I
 1. Start the container
 ```
 docker run -d --name nginx-long-cache \
-  -p 8787:8787 \
+  -p 8787:8080 \
   -v $HOME/.nginx/longcache/log:/var/log/nginx \
   -v $HOME/.nginx/longcache/cache:/var/cache/nginx \
   mendlik/nginx-cache
