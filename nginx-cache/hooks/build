@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Variables injected into the build by dockerhub:
+# IMAGE_NAME, DOCKER_TAG
+
+declare -r BUILD_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+declare -r VCS_URL="$(git config --get remote.origin.url || echo 'undefined')"
+declare -r VCS_REF="$(git rev-parse --short HEAD || echo 'undefined')"
+
+echo "Docker build hook"
+echo "  IMAGE:    $IMAGE_NAME"
+echo "  DATE:     $BUILD_DATE"
+echo "  VERSION:  $DOCKER_TAG"
+echo "  VCS_URL:  $VCS_URL"
+echo "  VCS_REF:  $VCS_REF"
+
+docker build \
+  --build-arg BUILD_DATE=$BUILD_DATE \
+  --build-arg VERSION=$DOCKER_TAG \
+  --build-arg VCS_URL=$VCS_URL \
+  --build-arg VCS_REF=$VCS_REF \
+  -t $IMAGE_NAME .
