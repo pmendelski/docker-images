@@ -1,4 +1,4 @@
-# Docker image with nginx
+# Nginx Docker Container
 
 [![Size and layers](https://images.microbadger.com/badges/image/mendlik/nginx.svg)](https://microbadger.com/images/mendlik/nginx)
 [![Version](https://images.microbadger.com/badges/version/mendlik/nginx.svg)](https://microbadger.com/images/mendlik/nginx)
@@ -13,7 +13,7 @@ A [Docker](docker) image with [Nginx](nginx).
 - [Alpine Linux][alpinelinux] - a lightweight Linux distribution
 - [Nginx][nginx] - a web server and load balancer
 
-## Simple usage
+## Sample usage
 
 ```
 docker run --name nginx \

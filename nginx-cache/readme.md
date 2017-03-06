@@ -1,4 +1,4 @@
-# Docker image with nginx
+# Nginx Caching Proxy Docker Container
 
 [![Size and layers](https://images.microbadger.com/badges/image/mendlik/nginx-cache.svg)](https://microbadger.com/images/mendlik/nginx-cache)
 [![Version](https://images.microbadger.com/badges/version/mendlik/nginx-cache.svg)](https://microbadger.com/images/mendlik/nginx-cache)
@@ -15,7 +15,7 @@ I use it while performing programming presentations with life coding sessions. I
 - [Alpine Linux][alpinelinux] - a lightweight Linux distribution
 - [Nginx][nginx] - a web caching proxy
 
-## Simple usage
+## Sample usage
 
 Start the container
 ```
