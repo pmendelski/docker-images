@@ -70,7 +70,7 @@ build() {
 release() {
   local -r IMAGE="$1"
   local -r VERSION="$2"
-  local -r TAG="$IMAGE-$VERSION"
+  local -r TAG="${IMAGE}_${VERSION}"
   validateVersion $VERSION
   git tag $TAG && git push --tags && \
     echo "Pushed git tag: $TAG" && \
