@@ -74,7 +74,7 @@ release() {
   validateVersion $VERSION
   git tag $TAG && git push --tags && \
     echo "Pushed git tag: $TAG" && \
-    echo "See: https://hub.docker.com/r/$DOCKERHUB_USERNAME/$IMAGE/~/settings/automated-builds/"
+    echo "See: https://hub.docker.com/r/$DOCKERHUB_USERNAME/$IMAGE/~/settings/builds/"
 }
 
 IMAGE="$1"
